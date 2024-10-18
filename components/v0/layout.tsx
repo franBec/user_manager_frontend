@@ -4,6 +4,7 @@ import React, { useState, ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { MenuIcon, XIcon } from "lucide-react";
+import { ModeToggle } from "../dark-mode/mode-toogle";
 
 interface LayoutProps {
   children: ReactNode;
@@ -57,16 +58,23 @@ export default function Layout({ children }: LayoutProps) {
         {/* Header */}
         <header className="bg-white shadow-sm z-10">
           <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-            <h1 className="text-2xl font-semibold text-gray-900">Dashboard</h1>
-            <Button
-              variant="outline"
-              size="icon"
-              className="md:hidden"
-              onClick={toggleSidebar}
-            >
-              <MenuIcon className="h-6 w-6" />
-              <span className="sr-only">Open sidebar</span>
-            </Button>
+            <div>
+              <h1 className="text-2xl font-semibold text-gray-900">
+                Dashboard
+              </h1>
+            </div>
+            <div className="flex gap-2">
+              <ModeToggle />
+              <Button
+                variant="outline"
+                size="icon"
+                className="md:hidden"
+                onClick={toggleSidebar}
+              >
+                <MenuIcon className="h-6 w-6" />
+                <span className="sr-only">Open sidebar</span>
+              </Button>
+            </div>
           </div>
         </header>
 
