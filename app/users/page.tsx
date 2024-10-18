@@ -1,7 +1,7 @@
-import React from "react";
+import Table from "./_components/table";
 
 const Users = () => {
-  return <div>Users</div>;
+  return <Table></Table>;
 };
 
 export default Users;
