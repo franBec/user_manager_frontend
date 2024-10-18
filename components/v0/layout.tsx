@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { MenuIcon, XIcon } from "lucide-react";
 import { ModeToggle } from "../dark-mode/mode-toogle";
+import Link from "next/link";
 
 interface LayoutProps {
   children: ReactNode;
@@ -24,7 +25,9 @@ export default function Layout({ children }: LayoutProps) {
         } md:translate-x-0 md:static fixed inset-y-0 left-0 z-50 flex flex-col`}
       >
         <div className="flex items-center justify-between h-16 px-4 border-b border-border">
-          <h2 className="text-xl font-bold">Sidebar</h2>
+          <Link href={"/"} className="text-2xl font-bold">
+            {"<PollitoDev/> 🐤"}
+          </Link>
           <Button
             variant="ghost"
             size="icon"
@@ -37,18 +40,18 @@ export default function Layout({ children }: LayoutProps) {
         </div>
         <ScrollArea className="flex-grow">
           <nav className="p-4 space-y-2">
-            <a href="#" className="block py-2 px-4 rounded hover:bg-primary/10">
-              Home
-            </a>
-            <a href="#" className="block py-2 px-4 rounded hover:bg-primary/10">
+            <Link
+              href="/users"
+              className="block py-2 px-4 rounded hover:bg-primary/10"
+            >
+              Users
+            </Link>
+            <Link
+              href="/about"
+              className="block py-2 px-4 rounded hover:bg-primary/10"
+            >
               About
-            </a>
-            <a href="#" className="block py-2 px-4 rounded hover:bg-primary/10">
-              Contact
-            </a>
-            <a href="#" className="block py-2 px-4 rounded hover:bg-primary/10">
-              Services
-            </a>
+            </Link>
           </nav>
         </ScrollArea>
       </aside>
