@@ -21,10 +21,10 @@ export default function Layout({ children }: LayoutProps) {
       <aside
         className={`bg-secondary text-secondary-foreground w-64 flex-shrink-0 transition-all duration-300 ease-in-out border-r border-border ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } md:translate-x-0 md:static fixed inset-y-0 left-0 z-50`}
+        } md:translate-x-0 md:static fixed inset-y-0 left-0 z-50 flex flex-col`}
       >
-        <div className="flex items-center justify-between p-4 border-b border-border">
-          <h2 className="text-xl font-bold">{"<PollitoDev/> 🐤"}</h2>
+        <div className="flex items-center justify-between h-16 px-4 border-b border-border">
+          <h2 className="text-xl font-bold">Sidebar</h2>
           <Button
             variant="ghost"
             size="icon"
@@ -56,9 +56,11 @@ export default function Layout({ children }: LayoutProps) {
       {/* Main content */}
       <div className="flex-grow flex flex-col overflow-hidden">
         {/* Header */}
-        <header className="bg-secondary text-secondary-foreground shadow-sm z-10 border-b border-border">
-          <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-            <div></div>
+        <header className="bg-secondary text-secondary-foreground shadow-sm z-10 border-b border-border h-16 flex items-center">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex justify-between items-center">
+            <div>
+              <h1 className="text-2xl font-semibold">Dashboard</h1>
+            </div>
             <div className="flex gap-2">
               <ModeToggle />
               <Button
