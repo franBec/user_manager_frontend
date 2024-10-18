@@ -16,15 +16,15 @@ export default function Layout({ children }: LayoutProps) {
   const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
 
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="flex h-screen overflow-hidden bg-background text-foreground">
       {/* Sidebar */}
       <aside
-        className={`bg-gray-800 text-white w-64 flex-shrink-0 transition-all duration-300 ease-in-out ${
+        className={`bg-secondary text-secondary-foreground w-64 flex-shrink-0 transition-all duration-300 ease-in-out border-r border-border ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         } md:translate-x-0 md:static fixed inset-y-0 left-0 z-50`}
       >
-        <div className="flex items-center justify-between p-4 border-b border-gray-700">
-          <h2 className="text-xl font-bold">Sidebar</h2>
+        <div className="flex items-center justify-between p-4 border-b border-border">
+          <h2 className="text-xl font-bold">{"<PollitoDev/> 🐤"}</h2>
           <Button
             variant="ghost"
             size="icon"
@@ -37,16 +37,16 @@ export default function Layout({ children }: LayoutProps) {
         </div>
         <ScrollArea className="flex-grow">
           <nav className="p-4 space-y-2">
-            <a href="#" className="block py-2 px-4 rounded hover:bg-gray-700">
+            <a href="#" className="block py-2 px-4 rounded hover:bg-primary/10">
               Home
             </a>
-            <a href="#" className="block py-2 px-4 rounded hover:bg-gray-700">
+            <a href="#" className="block py-2 px-4 rounded hover:bg-primary/10">
               About
             </a>
-            <a href="#" className="block py-2 px-4 rounded hover:bg-gray-700">
+            <a href="#" className="block py-2 px-4 rounded hover:bg-primary/10">
               Contact
             </a>
-            <a href="#" className="block py-2 px-4 rounded hover:bg-gray-700">
+            <a href="#" className="block py-2 px-4 rounded hover:bg-primary/10">
               Services
             </a>
           </nav>
@@ -56,13 +56,9 @@ export default function Layout({ children }: LayoutProps) {
       {/* Main content */}
       <div className="flex-grow flex flex-col overflow-hidden">
         {/* Header */}
-        <header className="bg-white shadow-sm z-10">
+        <header className="bg-secondary text-secondary-foreground shadow-sm z-10 border-b border-border">
           <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-            <div>
-              <h1 className="text-2xl font-semibold text-gray-900">
-                Dashboard
-              </h1>
-            </div>
+            <div></div>
             <div className="flex gap-2">
               <ModeToggle />
               <Button
@@ -79,7 +75,7 @@ export default function Layout({ children }: LayoutProps) {
         </header>
 
         {/* Page content */}
-        <main className="flex-grow overflow-auto bg-gray-100 p-6">
+        <main className="flex-grow overflow-auto bg-background p-6">
           <div className="max-w-7xl mx-auto">{children}</div>
         </main>
       </div>
