@@ -1,6 +1,8 @@
 "use client";
+import { useSearchParams } from "next/navigation";
 import { DataTable } from "./_components/data-table";
 import { useGetUsers } from "@/api/users/usersApi";
+import { buildParams } from "./_utils/utils";
 
 export default function Users() {
   const {
@@ -8,7 +10,7 @@ export default function Users() {
     isError,
     data: response,
     error,
-  } = useGetUsers(undefined, {
+  } = useGetUsers(buildParams(useSearchParams()), {
     axios: { baseURL: process.env.NEXT_PUBLIC_API_USERS_BASE_URL },
   });
 
