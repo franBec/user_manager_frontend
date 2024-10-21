@@ -3,7 +3,7 @@ import { ReadonlyURLSearchParams } from "next/navigation";
 
 const getPageNumber = (pageNumber: string | null) => {
     if (!pageNumber) return undefined;
-    const parsedPageNumber = parseInt(pageNumber);
+    const parsedPageNumber = parseInt(pageNumber) - 1;
     return isNaN(parsedPageNumber) ? undefined : parsedPageNumber;
 };
 
