@@ -8,7 +8,7 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import { useSearchParams, useRouter } from "next/navigation";
-import { getPageNumberForFrontendPagination } from "../_utils/utils";
+import { getPageNumberForFrontendPagination } from "../_utils/searchParamsUtils";
 
 interface TablePaginationProps {
   pageSize: number;

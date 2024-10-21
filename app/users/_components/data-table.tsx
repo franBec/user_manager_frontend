@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  createColumnHelper,
   flexRender,
   getCoreRowModel,
   useReactTable,
@@ -15,27 +14,11 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { User } from "@/api/users/model/user";
 import { Users } from "@/api/users/model/users";
 import { TablePagination } from "./table-pagination";
+import { columns } from "../_utils/tableColumnUtils";
 
 export function DataTable({ data }: { readonly data: Users }) {
-  const columnHelper = createColumnHelper<User>();
-  const columns = [
-    columnHelper.accessor("id", {
-      header: () => "Id",
-    }),
-    columnHelper.accessor("name", {
-      header: () => "Name",
-    }),
-    columnHelper.accessor("username", {
-      header: () => "Username",
-    }),
-    columnHelper.accessor("email", {
-      header: () => "Email",
-    }),
-  ];
-
   const tableData = data.content ?? [];
 
   const table = useReactTable({

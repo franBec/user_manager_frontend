@@ -2,7 +2,7 @@
 import { useSearchParams } from "next/navigation";
 import { DataTable } from "./_components/data-table";
 import { useGetUsers } from "@/api/users/usersApi";
-import { buildParams } from "./_utils/utils";
+import { buildParams } from "./_utils/searchParamsUtils";
 
 export default function Users() {
   const {
