@@ -15,16 +15,11 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Button } from "@/components/ui/button";
 import { User } from "@/api/users/model/user";
 import { Users } from "@/api/users/model/users";
-import { useSearchParams, useRouter } from "next/navigation";
-import { getPageNumberForFrontendPagination } from "../_utils/utils";
+import { TablePagination } from "./table-pagination";
 
 export function DataTable({ data }: { readonly data: Users }) {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-
   const columnHelper = createColumnHelper<User>();
   const columns = [
     columnHelper.accessor("id", {
@@ -48,16 +43,6 @@ export function DataTable({ data }: { readonly data: Users }) {
     columns,
     getCoreRowModel: getCoreRowModel(),
   });
-
-  const handlePageChange = (newPageNumber: number) => {
-    const params = new URLSearchParams(searchParams);
-    params.set("pageNumber", String(newPageNumber));
-    router.push(`?${params.toString()}`);
-  };
-
-  const pageNumber = getPageNumberForFrontendPagination(
-    searchParams.get("pageNumber")
-  );
 
   return (
     <>
@@ -112,21 +97,14 @@ export function DataTable({ data }: { readonly data: Users }) {
         </Table>
       </div>
       <div className="flex items-center justify-end space-x-2 py-4">
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => handlePageChange(pageNumber - 1)}
-          disabled={pageNumber <= 1} // Disable previous button if on page 1
-        >
-          Previous
-        </Button>
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => handlePageChange(pageNumber + 1)}
-        >
-          Next
-        </Button>
+        {data.pageable?.pageSize !== undefined && data.total !== undefined ? (
+          <TablePagination
+            pageSize={data.pageable?.pageSize}
+            total={data.total}
+          />
+        ) : (
+          <p>{"Pagination not available"}</p>
+        )}
       </div>
     </>
   );
