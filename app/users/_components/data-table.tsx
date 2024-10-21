@@ -19,6 +19,7 @@ import { Button } from "@/components/ui/button";
 import { User } from "@/api/users/model/user";
 import { Users } from "@/api/users/model/users";
 import { useSearchParams, useRouter } from "next/navigation";
+import { getPageNumberForFrontendPagination } from "../_utils/utils";
 
 export function DataTable({ data }: { readonly data: Users }) {
   const router = useRouter();
@@ -54,7 +55,9 @@ export function DataTable({ data }: { readonly data: Users }) {
     router.push(`?${params.toString()}`);
   };
 
-  const pageNumber = parseInt(searchParams.get("pageNumber") || "1", 10);
+  const pageNumber = getPageNumberForFrontendPagination(
+    searchParams.get("pageNumber")
+  );
 
   return (
     <>

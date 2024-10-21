@@ -1,7 +1,13 @@
 import { UserSortProperty, SortDirection } from "@/api/users/model";
 import { ReadonlyURLSearchParams } from "next/navigation";
 
-const getPageNumber = (pageNumber: string | null) => {
+export const getPageNumberForFrontendPagination = (pageNumber: string | null) => {
+    if (!pageNumber) return 1;
+    const parsedPageNumber = parseInt(pageNumber);
+    return isNaN(parsedPageNumber) ? 1 : parsedPageNumber;
+};
+
+const getPageNumberForBackendPagination = (pageNumber: string | null) => {
     if (!pageNumber) return undefined;
     const parsedPageNumber = parseInt(pageNumber) - 1;
     return isNaN(parsedPageNumber) ? undefined : parsedPageNumber;
@@ -37,7 +43,7 @@ const getQ = (q: string | null): string | undefined => {
 };
 
 export const buildParams = (searchParams: ReadonlyURLSearchParams) => ({
-    pageNumber: getPageNumber(searchParams.get("pageNumber")),
+    pageNumber: getPageNumberForBackendPagination(searchParams.get("pageNumber")),
     pageSize: getPageSize(),
     sortProperty: getSortProperty(searchParams.get("sortProperty")),
     sortDirection: getSortDirection(searchParams.get("sortDirection")),
