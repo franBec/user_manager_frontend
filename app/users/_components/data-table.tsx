@@ -4,7 +4,6 @@ import {
   createColumnHelper,
   flexRender,
   getCoreRowModel,
-  getPaginationRowModel,
   useReactTable,
 } from "@tanstack/react-table";
 
@@ -18,12 +17,9 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { User } from "@/api/users/model/user";
+import { Users } from "@/api/users/model/users";
 
-interface DataTableProps<TData extends User> {
-  data: TData[];
-}
-
-export function DataTable<TData extends User>({ data }: DataTableProps<TData>) {
+export function DataTable({ data }: { readonly data: Users }) {
   const columnHelper = createColumnHelper<User>();
   const columns = [
     columnHelper.accessor("id", {
@@ -40,11 +36,12 @@ export function DataTable<TData extends User>({ data }: DataTableProps<TData>) {
     }),
   ];
 
+  const tableData = data.content ?? [];
+
   const table = useReactTable({
-    data,
+    data: tableData,
     columns,
     getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
   });
 
   return (

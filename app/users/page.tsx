@@ -27,7 +27,7 @@ export default function Users() {
   }
   return (
     <div className="container mx-auto py-10">
-      <DataTable data={response.data.content} />
+      <DataTable data={response.data} />
     </div>
   );
 }
