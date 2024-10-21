@@ -33,7 +33,7 @@ const getSortDirection = (sortDirection: string | null) => {
 };
 
 const getQ = (q: string | null): string | undefined => {
-    return q || undefined;
+    return q ?? undefined;
 };
 
 export const buildParams = (searchParams: ReadonlyURLSearchParams) => ({

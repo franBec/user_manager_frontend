@@ -4,7 +4,7 @@ import React, { useState, ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { MenuIcon, XIcon } from "lucide-react";
-import { ModeToggle } from "../dark-mode/modeToogle";
+import { ModeToggle } from "../dark-mode/mode-toogle";
 import Link from "next/link";
 
 interface LayoutProps {
