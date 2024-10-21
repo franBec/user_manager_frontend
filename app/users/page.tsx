@@ -1,15 +1,31 @@
-import { getGetUsersResponseMock } from "@/api/users/usersApi.msw";
+"use client";
 import { DataTable } from "./_components/data-table";
+import { useGetUsers } from "@/api/users/usersApi";
 
-export default async function Users() {
-  const { content } = getGetUsersResponseMock();
+export default function Users() {
+  const {
+    isPending,
+    isError,
+    data: response,
+    error,
+  } = useGetUsers(undefined, {
+    axios: { baseURL: process.env.NEXT_PUBLIC_API_USERS_BASE_URL },
+  });
 
-  if (!content) {
+  if (isPending) {
+    return <span>Loading...</span>;
+  }
+
+  if (isError) {
+    return <span>Error: {error.message}</span>;
+  }
+
+  if (!response.data.content) {
     return <p>No content</p>;
   }
   return (
     <div className="container mx-auto py-10">
-      <DataTable data={content} />
+      <DataTable data={response.data.content} />
     </div>
   );
 }

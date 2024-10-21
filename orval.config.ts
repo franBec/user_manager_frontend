@@ -7,7 +7,6 @@ export default defineConfig({
             target: 'api/users/usersApi.ts',
             schemas: 'api/users/model',
             client: 'react-query',
-            mock: true,
         },
         input: {
             target: './openapi/post.yaml',
