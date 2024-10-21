@@ -18,8 +18,12 @@ import {
 import { Button } from "@/components/ui/button";
 import { User } from "@/api/users/model/user";
 import { Users } from "@/api/users/model/users";
+import { useSearchParams, useRouter } from "next/navigation";
 
 export function DataTable({ data }: { readonly data: Users }) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
   const columnHelper = createColumnHelper<User>();
   const columns = [
     columnHelper.accessor("id", {
@@ -43,6 +47,14 @@ export function DataTable({ data }: { readonly data: Users }) {
     columns,
     getCoreRowModel: getCoreRowModel(),
   });
+
+  const handlePageChange = (newPageNumber: number) => {
+    const params = new URLSearchParams(searchParams);
+    params.set("pageNumber", String(newPageNumber));
+    router.push(`?${params.toString()}`);
+  };
+
+  const pageNumber = parseInt(searchParams.get("pageNumber") || "1", 10);
 
   return (
     <>
@@ -100,16 +112,15 @@ export function DataTable({ data }: { readonly data: Users }) {
         <Button
           variant="outline"
           size="sm"
-          onClick={() => table.previousPage()}
-          disabled={!table.getCanPreviousPage()}
+          onClick={() => handlePageChange(pageNumber - 1)}
+          disabled={pageNumber <= 1} // Disable previous button if on page 1
         >
           Previous
         </Button>
         <Button
           variant="outline"
           size="sm"
-          onClick={() => table.nextPage()}
-          disabled={!table.getCanNextPage()}
+          onClick={() => handlePageChange(pageNumber + 1)}
         >
           Next
         </Button>
