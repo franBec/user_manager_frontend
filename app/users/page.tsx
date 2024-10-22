@@ -27,12 +27,11 @@ export default function Users() {
   }
 
   if (isError) {
-    return (
-      <ErrorAlert
-        message="algo malio sal"
-        errorDetails="muchos detalles mucho texto"
-      />
-    );
+    const errorMessage = error?.response?.data
+      ? JSON.stringify(error.response.data, null, 2)
+      : JSON.stringify(error, null, 2);
+
+    return <ErrorAlert errorDetails={errorMessage} />;
   }
 
   return (

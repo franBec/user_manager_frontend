@@ -5,13 +5,13 @@ import { Button } from "@/components/ui/button";
 
 interface ServiceErrorAlertProps {
   title?: string;
-  message: string;
+  message?: string;
   errorDetails?: string;
 }
 
 export default function ErrorAlert({
   title = "Error",
-  message,
+  message = "Something went wrong...",
   errorDetails,
 }: Readonly<ServiceErrorAlertProps>) {
   const [showDetails, setShowDetails] = useState(false);
