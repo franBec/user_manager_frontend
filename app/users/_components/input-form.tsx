@@ -13,6 +13,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { GetUsersParams } from "@/api/users/model";
 import { useRouter } from "next/navigation";
+import { useToast } from "@/hooks/use-toast";
 
 export function InputForm({
   defaultValues,
@@ -21,9 +22,18 @@ export function InputForm({
     defaultValues,
   });
   const router = useRouter();
+  const { toast } = useToast();
 
   function onSubmit({ q }: GetUsersParams) {
-    if (!q || q.length < 2) {
+    if (!q || q.trim().length === 0) {
+      router.push("/users");
+      return;
+    }
+
+    if (q.length < 2) {
+      toast({
+        description: "Write at least two characters for searching...",
+      });
       return;
     }
 

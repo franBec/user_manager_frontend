@@ -4,6 +4,7 @@ import "./globals.css";
 import Layout from "@/components/v0/layout";
 import { ThemeProvider } from "@/components/dark-mode/theme-provider";
 import ClientProvider from "@/components/react-query/clientProvider";
+import { Toaster } from "@/components/ui/toaster";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -39,6 +40,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <Layout>{children}</Layout>
+            <Toaster />
           </ThemeProvider>
         </body>
       </html>
