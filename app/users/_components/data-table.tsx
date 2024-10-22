@@ -15,7 +15,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Users } from "@/api/users/model/users";
-import { columns } from "../_utils/tableColumnUtils";
+import { columns } from "../_utils/table-column-utils";
 
 export function DataTable({ data }: { readonly data: Users }) {
   const tableData = data.content ?? [];

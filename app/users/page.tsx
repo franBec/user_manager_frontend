@@ -5,7 +5,7 @@ import { useGetUsers } from "@/api/users/usersApi";
 import {
   buildGetUsersParams,
   getPageNumberForFrontendPagination,
-} from "./_utils/searchParamsUtils";
+} from "./_utils/search-params-utils";
 import { InputForm } from "./_components/input-form";
 import { DataTablePagination } from "./_components/data-table-pagination";
 import AxiosErrorAlert from "@/components/v0/axios-error-alert";
