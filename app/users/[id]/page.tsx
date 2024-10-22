@@ -4,6 +4,7 @@ import { getId } from "./_utils/params-utils";
 import { useGetUser } from "@/api/users/usersApi";
 import Loading from "@/components/v0/loading";
 import AxiosErrorAlert from "@/components/v0/axios-error-alert";
+import UserCard from "./_components/user-card";
 
 const UserDetails = () => {
   const id = getId(useParams<{ id: string }>());
@@ -24,7 +25,7 @@ const UserDetails = () => {
     return <AxiosErrorAlert axiosError={error} />;
   }
 
-  return <p>{JSON.stringify(response, null, 2)}</p>;
+  return <UserCard user={response.data} />;
 };
 
 export default UserDetails;
