@@ -8,6 +8,7 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import { useSearchParams, useRouter } from "next/navigation";
+import { TablePaginationItems } from "./table-pagination-items";
 
 interface TablePaginationProps {
   pageNumber: number;
@@ -35,33 +36,6 @@ export function TablePagination({
 
   const totalPages = Math.ceil(total / pageSize);
 
-  const renderPageNumbers = () => {
-    const items = [];
-    const maxVisiblePages = 5;
-
-    let startPage = Math.max(1, pageNumber - Math.floor(maxVisiblePages / 2));
-    const endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
-
-    if (endPage - startPage + 1 < maxVisiblePages) {
-      startPage = Math.max(1, endPage - maxVisiblePages + 1);
-    }
-
-    for (let i = startPage; i <= endPage; i++) {
-      items.push(
-        <PaginationItem key={i}>
-          <PaginationLink
-            href="#"
-            isActive={i === pageNumber}
-            onClick={() => handlePageChange(i)}
-          >
-            {i}
-          </PaginationLink>
-        </PaginationItem>
-      );
-    }
-
-    return items;
-  };
   return (
     <Pagination>
       <PaginationContent>
@@ -82,7 +56,11 @@ export function TablePagination({
             {pageNumber > 3 && <PaginationEllipsis />}
           </>
         )}
-        {renderPageNumbers()}
+        <TablePaginationItems
+          pageNumber={pageNumber}
+          totalPages={totalPages}
+          handlePageChange={handlePageChange}
+        />
         {pageNumber < totalPages - 1 && (
           <>
             {pageNumber < totalPages - 2 && <PaginationEllipsis />}

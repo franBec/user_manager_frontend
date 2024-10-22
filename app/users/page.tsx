@@ -11,7 +11,6 @@ import { TablePagination } from "./_components/table-pagination";
 
 export default function Users() {
   const searchParams = useSearchParams();
-
   const getUsersParams = buildGetUsersParams(searchParams);
   const {
     isPending,
@@ -40,7 +39,8 @@ export default function Users() {
       response.data.total !== undefined ? (
         <TablePagination
           pageNumber={getPageNumberForFrontendPagination(
-            searchParams.get("pageNumber")
+            searchParams,
+            "pageNumber"
           )}
           pageSize={response.data.pageable?.pageSize}
           total={response.data.total}

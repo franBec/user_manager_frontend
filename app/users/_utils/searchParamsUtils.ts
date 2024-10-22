@@ -1,13 +1,15 @@
 import { UserSortProperty, SortDirection } from "@/api/users/model";
 import { ReadonlyURLSearchParams } from "next/navigation";
 
-export const getPageNumberForFrontendPagination = (pageNumber: string | null) => {
+export const getPageNumberForFrontendPagination = (searchParams: ReadonlyURLSearchParams, searchParameter: string) => {
+    const pageNumber = searchParams.get(searchParameter)
     if (!pageNumber) return 1;
     const parsedPageNumber = parseInt(pageNumber);
     return isNaN(parsedPageNumber) ? 1 : parsedPageNumber;
 };
 
-const getPageNumberForBackendPagination = (pageNumber: string | null) => {
+const getPageNumberForBackendPagination = (searchParams: ReadonlyURLSearchParams, searchParameter: string) => {
+    const pageNumber = searchParams.get(searchParameter)
     if (!pageNumber) return undefined;
     const parsedPageNumber = parseInt(pageNumber) - 1;
     return isNaN(parsedPageNumber) ? undefined : parsedPageNumber;
@@ -18,7 +20,8 @@ const getPageSize = () => {
     return pageSize ? parseInt(pageSize, 10) : undefined;
 };
 
-const getSortProperty = (sortProperty: string | null) => {
+const getSortProperty = (searchParams: ReadonlyURLSearchParams, searchParameter: string) => {
+    const sortProperty = searchParams.get(searchParameter)
     if (
         !sortProperty ||
         !Object.values(UserSortProperty).includes(sortProperty as UserSortProperty)
@@ -28,7 +31,8 @@ const getSortProperty = (sortProperty: string | null) => {
     return sortProperty as UserSortProperty;
 };
 
-const getSortDirection = (sortDirection: string | null) => {
+const getSortDirection = (searchParams: ReadonlyURLSearchParams, searchParameter: string) => {
+    const sortDirection = searchParams.get(searchParameter)
     if (
         !sortDirection ||
         !Object.values(SortDirection).includes(sortDirection as SortDirection)
@@ -43,9 +47,9 @@ const getQ = (q: string | null): string | undefined => {
 };
 
 export const buildGetUsersParams = (searchParams: ReadonlyURLSearchParams) => ({
-    pageNumber: getPageNumberForBackendPagination(searchParams.get("pageNumber")),
+    pageNumber: getPageNumberForBackendPagination(searchParams, "pageNumber"),
     pageSize: getPageSize(),
-    sortProperty: getSortProperty(searchParams.get("sortProperty")),
-    sortDirection: getSortDirection(searchParams.get("sortDirection")),
+    sortProperty: getSortProperty(searchParams, "sortProperty"),
+    sortDirection: getSortDirection(searchParams, "sortDirection"),
     q: getQ(searchParams.get("q")),
 });
