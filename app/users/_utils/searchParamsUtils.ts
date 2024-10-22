@@ -11,11 +11,11 @@ export const getPageNumberForFrontendPagination = (searchParams: ReadonlyURLSear
 const getPageNumberForBackendPagination = (searchParams: ReadonlyURLSearchParams, searchParameter: string) => {
     const pageNumber = searchParams.get(searchParameter)
     if (!pageNumber) return undefined;
-    const parsedPageNumber = parseInt(pageNumber) - 1;
+    const parsedPageNumber = parseInt(pageNumber);
     if (isNaN(parsedPageNumber)) {
         throw new Error(`URL Search Param "${searchParameter}" must be undefined or a number`)
     }
-    return parsedPageNumber;
+    return parsedPageNumber - 1;
 };
 
 const getPageSize = () => {
