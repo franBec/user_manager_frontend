@@ -12,37 +12,44 @@ const getPageNumberForBackendPagination = (searchParams: ReadonlyURLSearchParams
     const pageNumber = searchParams.get(searchParameter)
     if (!pageNumber) return undefined;
     const parsedPageNumber = parseInt(pageNumber) - 1;
-    return isNaN(parsedPageNumber) ? undefined : parsedPageNumber;
+    if (isNaN(parsedPageNumber)) {
+        throw new Error(`URL Search Param "${searchParameter}" must be undefined or a number`)
+    }
+    return parsedPageNumber;
 };
 
 const getPageSize = () => {
     const pageSize = process.env.NEXT_PUBLIC_API_USERS_PAGE_SIZE;
-    return pageSize ? parseInt(pageSize, 10) : undefined;
+    return pageSize ? parseInt(pageSize) : undefined;
 };
 
 const getSortProperty = (searchParams: ReadonlyURLSearchParams, searchParameter: string) => {
     const sortProperty = searchParams.get(searchParameter)
-    if (
-        !sortProperty ||
-        !Object.values(UserSortProperty).includes(sortProperty as UserSortProperty)
-    ) {
+    if (!sortProperty) {
         return undefined;
+    }
+
+    const userSortProperties = Object.values(UserSortProperty)
+    if (!userSortProperties.includes(sortProperty as UserSortProperty)) {
+        throw new Error(`URL Search Param "${searchParameter}" must be undefined or one of the following values: ${userSortProperties.toString()}`)
     }
     return sortProperty as UserSortProperty;
 };
 
 const getSortDirection = (searchParams: ReadonlyURLSearchParams, searchParameter: string) => {
     const sortDirection = searchParams.get(searchParameter)
-    if (
-        !sortDirection ||
-        !Object.values(SortDirection).includes(sortDirection as SortDirection)
-    ) {
+    if (!sortDirection) {
         return undefined;
+    }
+
+    const sortDirections = Object.values(SortDirection)
+    if (!sortDirections.includes(sortDirection as SortDirection)) {
+        throw new Error(`URL Search Param "${searchParameter}" must be undefined or one of the following values: ${sortDirections.toString()}`)
     }
     return sortDirection as SortDirection;
 };
 
-const getQ = (q: string | null): string | undefined => {
+const getQ = (q: string | null) => {
     return q ?? undefined;
 };
 
