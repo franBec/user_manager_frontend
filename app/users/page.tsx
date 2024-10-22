@@ -8,6 +8,7 @@ import {
 } from "./_utils/searchParamsUtils";
 import { InputForm } from "./_components/input-form";
 import { DataTablePagination } from "./_components/data-table-pagination";
+import ErrorAlert from "@/components/v0/error-alert";
 
 export default function Users() {
   const searchParams = useSearchParams();
@@ -26,7 +27,12 @@ export default function Users() {
   }
 
   if (isError) {
-    return <p>Error: {error.message}</p>;
+    return (
+      <ErrorAlert
+        message="algo malio sal"
+        errorDetails="muchos detalles mucho texto"
+      />
+    );
   }
 
   return (
@@ -36,18 +42,16 @@ export default function Users() {
         <DataTable data={response.data} />
       </div>
       {response.data.pageable?.pageSize !== undefined &&
-      response.data.total !== undefined ? (
-        <DataTablePagination
-          pageNumber={getPageNumberForFrontendPagination(
-            searchParams,
-            "pageNumber"
-          )}
-          pageSize={response.data.pageable?.pageSize}
-          total={response.data.total}
-        />
-      ) : (
-        <p>{"Pagination not available"}</p>
-      )}
+        response.data.total !== undefined && (
+          <DataTablePagination
+            pageNumber={getPageNumberForFrontendPagination(
+              searchParams,
+              "pageNumber"
+            )}
+            pageSize={response.data.pageable?.pageSize}
+            total={response.data.total}
+          />
+        )}
     </div>
   );
 }

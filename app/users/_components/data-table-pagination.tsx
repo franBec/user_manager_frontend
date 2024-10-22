@@ -25,7 +25,7 @@ export function DataTablePagination({
   const searchParams = useSearchParams();
 
   if (pageNumber < 1 || pageSize < 1 || total < 1) {
-    return <p>{"Pagination not available"}</p>;
+    return <></>;
   }
 
   const handlePageChange = (newPageNumber: number) => {
