@@ -9,6 +9,7 @@ import {
 import { InputForm } from "./_components/input-form";
 import { DataTablePagination } from "./_components/data-table-pagination";
 import ErrorAlert from "@/components/v0/error-alert";
+import Loading from "@/components/v0/loading";
 
 export default function Users() {
   const searchParams = useSearchParams();
@@ -23,7 +24,7 @@ export default function Users() {
   });
 
   if (isPending) {
-    return <p>Loading...</p>;
+    return <Loading />;
   }
 
   if (isError) {
