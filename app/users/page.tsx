@@ -36,21 +36,25 @@ export default function Users() {
   }
 
   return (
-    <div className="container mx-auto">
-      <InputForm defaultValues={getUsersParams} />
-      <div className="py-4">
+    <div className="container mx-auto flex flex-col space-y-4">
+      <div>
+        <InputForm defaultValues={getUsersParams} />
+      </div>
+      <div>
         <DataTable data={response.data} />
       </div>
       {response.data.pageable?.pageSize !== undefined &&
         response.data.total !== undefined && (
-          <DataTablePagination
-            pageNumber={getPageNumberForFrontendPagination(
-              searchParams,
-              "pageNumber"
-            )}
-            pageSize={response.data.pageable?.pageSize}
-            total={response.data.total}
-          />
+          <div>
+            <DataTablePagination
+              pageNumber={getPageNumberForFrontendPagination(
+                searchParams,
+                "pageNumber"
+              )}
+              pageSize={response.data.pageable?.pageSize}
+              total={response.data.total}
+            />
+          </div>
         )}
     </div>
   );
