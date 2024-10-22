@@ -2,11 +2,17 @@
 import { useSearchParams } from "next/navigation";
 import { DataTable } from "./_components/data-table";
 import { useGetUsers } from "@/api/users/usersApi";
-import { buildGetUsersParams } from "./_utils/searchParamsUtils";
+import {
+  buildGetUsersParams,
+  getPageNumberForFrontendPagination,
+} from "./_utils/searchParamsUtils";
 import { InputForm } from "./_components/input-form";
+import { TablePagination } from "./_components/table-pagination";
 
 export default function Users() {
-  const getUsersParams = buildGetUsersParams(useSearchParams());
+  const searchParams = useSearchParams();
+
+  const getUsersParams = buildGetUsersParams(searchParams);
   const {
     isPending,
     isError,
@@ -17,19 +23,31 @@ export default function Users() {
   });
 
   if (isPending) {
-    return <span>Loading...</span>;
+    return <p>Loading...</p>;
   }
 
   if (isError) {
-    return <span>Error: {error.message}</span>;
+    return <p>Error: {error.message}</p>;
   }
 
   return (
-    <div className="container mx-auto py-10">
+    <div className="container mx-auto">
       <InputForm defaultValues={getUsersParams} />
       <div className="py-4">
         <DataTable data={response.data} />
       </div>
+      {response.data.pageable?.pageSize !== undefined &&
+      response.data.total !== undefined ? (
+        <TablePagination
+          pageNumber={getPageNumberForFrontendPagination(
+            searchParams.get("pageNumber")
+          )}
+          pageSize={response.data.pageable?.pageSize}
+          total={response.data.total}
+        />
+      ) : (
+        <p>{"Pagination not available"}</p>
+      )}
     </div>
   );
 }

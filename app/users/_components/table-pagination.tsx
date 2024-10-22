@@ -8,19 +8,24 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import { useSearchParams, useRouter } from "next/navigation";
-import { getPageNumberForFrontendPagination } from "../_utils/searchParamsUtils";
 
 interface TablePaginationProps {
+  pageNumber: number;
   pageSize: number;
   total: number;
 }
 
 export function TablePagination({
+  pageNumber,
   pageSize,
   total,
 }: Readonly<TablePaginationProps>) {
   const router = useRouter();
   const searchParams = useSearchParams();
+
+  if (pageNumber < 1 || pageSize < 1 || total < 1) {
+    return <p>{"Pagination not available"}</p>;
+  }
 
   const handlePageChange = (newPageNumber: number) => {
     const params = new URLSearchParams(searchParams);
@@ -28,9 +33,6 @@ export function TablePagination({
     router.push(`?${params.toString()}`);
   };
 
-  const pageNumber = getPageNumberForFrontendPagination(
-    searchParams.get("pageNumber")
-  );
   const totalPages = Math.ceil(total / pageSize);
 
   const renderPageNumbers = () => {
