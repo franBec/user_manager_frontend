@@ -7,7 +7,7 @@ import {
   getPageNumberForFrontendPagination,
 } from "./_utils/searchParamsUtils";
 import { InputForm } from "./_components/input-form";
-import { TablePagination } from "./_components/table-pagination";
+import { DataTablePagination } from "./_components/data-table-pagination";
 
 export default function Users() {
   const searchParams = useSearchParams();
@@ -37,7 +37,7 @@ export default function Users() {
       </div>
       {response.data.pageable?.pageSize !== undefined &&
       response.data.total !== undefined ? (
-        <TablePagination
+        <DataTablePagination
           pageNumber={getPageNumberForFrontendPagination(
             searchParams,
             "pageNumber"

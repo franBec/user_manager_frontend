@@ -8,7 +8,7 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import { useSearchParams, useRouter } from "next/navigation";
-import { TablePaginationItems } from "./table-pagination-items";
+import { DataTablePaginationItems } from "./data-table-pagination-items";
 
 interface TablePaginationProps {
   pageNumber: number;
@@ -16,7 +16,7 @@ interface TablePaginationProps {
   total: number;
 }
 
-export function TablePagination({
+export function DataTablePagination({
   pageNumber,
   pageSize,
   total,
@@ -56,7 +56,7 @@ export function TablePagination({
             {pageNumber > 3 && <PaginationEllipsis />}
           </>
         )}
-        <TablePaginationItems
+        <DataTablePaginationItems
           pageNumber={pageNumber}
           totalPages={totalPages}
           handlePageChange={handlePageChange}
