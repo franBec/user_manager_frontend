@@ -42,7 +42,7 @@ const getQ = (q: string | null): string | undefined => {
     return q ?? undefined;
 };
 
-export const buildParams = (searchParams: ReadonlyURLSearchParams) => ({
+export const buildGetUsersParams = (searchParams: ReadonlyURLSearchParams) => ({
     pageNumber: getPageNumberForBackendPagination(searchParams.get("pageNumber")),
     pageSize: getPageSize(),
     sortProperty: getSortProperty(searchParams.get("sortProperty")),
