@@ -5,6 +5,7 @@ import Layout from "@/components/v0/layout";
 import { ThemeProvider } from "@/components/dark-mode/theme-provider";
 import ClientProvider from "@/components/react-query/client-provider";
 import { Toaster } from "@/components/ui/toaster";
+import React from "react";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -24,8 +25,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  modal,
 }: Readonly<{
   children: React.ReactNode;
+  modal: React.ReactNode;
 }>) {
   return (
     <ClientProvider>
@@ -39,7 +42,10 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <Layout>{children}</Layout>
+            <Layout>
+              {modal}
+              {children}
+            </Layout>
             <Toaster />
           </ThemeProvider>
         </body>
