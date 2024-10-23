@@ -27,7 +27,7 @@ export const Sidebar = ({ isOpen, toggleSidebar }: SidebarProps) => {
       } md:translate-x-0 md:static fixed inset-y-0 left-0 z-50 flex flex-col`}
     >
       <div className="flex items-center justify-between h-16 px-4 border-b border-border">
-        <Link href={"/"} className="text-2xl font-bold">
+        <Link href={"/"} className="text-xl font-bold">
           {"<PollitoDev/> 🐤"}
         </Link>
         <Button

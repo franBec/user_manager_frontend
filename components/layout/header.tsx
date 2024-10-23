@@ -9,7 +9,8 @@ export const Header = ({ toggleSidebar }: { toggleSidebar: () => void }) => {
   return (
     <header className="bg-secondary text-secondary-foreground shadow-sm z-10 border-b border-border h-16 flex items-center">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex justify-between items-center">
-        <h1 className="text-2xl font-semibold">Dashboard</h1>
+        {/* <h1 className="text-2xl font-semibold">Dashboard</h1> */}
+        <div></div>
         <div className="flex gap-2">
           <ModeToggle />
           <Button
