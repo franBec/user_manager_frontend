@@ -14,6 +14,7 @@ import { Input } from "@/components/ui/input";
 import { GetUsersParams } from "@/api/users/model";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/hooks/use-toast";
+import { Search } from "lucide-react";
 
 export function InputForm({
   defaultValues,
@@ -60,7 +61,10 @@ export function InputForm({
             </FormItem>
           )}
         />
-        <Button type="submit">{"Search"}</Button>
+        <Button type="submit" className="flex items-center space-x-1">
+          <Search />
+          <span>{"Search"}</span>
+        </Button>
       </form>
     </Form>
   );
