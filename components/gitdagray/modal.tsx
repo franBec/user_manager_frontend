@@ -1,3 +1,5 @@
+//https://github.com/gitdagray/nextjs-modal-intercepting-routes/blob/main/src/components/Modal.tsx
+
 "use client";
 import { useRouter } from "next/navigation";
 import { Dialog, DialogContent, DialogOverlay } from "../ui/dialog";
