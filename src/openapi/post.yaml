@@ -224,7 +224,7 @@ components:
             $ref: '#/components/schemas/User'
         pageable:
           $ref: '#/components/schemas/Pageable'
-        total:
+        totalElements:
           description: Total number of items that meet the criteria
           example: 10
           type: integer

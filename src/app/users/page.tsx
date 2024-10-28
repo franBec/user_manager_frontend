@@ -40,7 +40,7 @@ export default function Users() {
         <DataTable data={response.data} />
       </div>
       {response.data.pageable?.pageSize !== undefined &&
-        response.data.total !== undefined && (
+        response.data.totalElements !== undefined && (
           <div>
             <DataTablePagination
               pageNumber={getPageNumberForFrontendPagination(
@@ -48,7 +48,7 @@ export default function Users() {
                 "pageNumber"
               )}
               pageSize={response.data.pageable?.pageSize}
-              total={response.data.total}
+              total={response.data.totalElements}
             />
           </div>
         )}
