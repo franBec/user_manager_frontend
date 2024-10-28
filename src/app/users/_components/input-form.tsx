@@ -11,10 +11,10 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { GetUsersParams } from "@/api/users/model";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/hooks/use-toast";
 import { Search } from "lucide-react";
+import { GetUsersParams } from "@/api/users/model";
 
 export function InputForm({
   defaultValues,

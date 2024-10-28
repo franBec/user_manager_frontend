@@ -4,12 +4,12 @@ export default defineConfig({
     users: {
         output: {
             mode: 'split',
-            target: 'api/users/usersApi.ts',
-            schemas: 'api/users/model',
+            target: 'src/api/users/usersApi.ts',
+            schemas: 'src/api/users/model',
             client: 'react-query',
         },
         input: {
-            target: './openapi/post.yaml',
+            target: 'src/openapi/post.yaml',
         },
     },
 });

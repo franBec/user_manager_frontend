@@ -1,4 +1,4 @@
-import { UserSortProperty, SortDirection } from "@/api/users/model";
+import { SortDirection, UserSortProperty } from "@/api/users/model";
 import { ReadonlyURLSearchParams } from "next/navigation";
 
 export const getPageNumberForFrontendPagination = (searchParams: ReadonlyURLSearchParams, searchParameter: string) => {

@@ -1,4 +1,3 @@
-import { User } from "@/api/users/model/user";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import UserAddress from "./user-address";
@@ -6,6 +5,7 @@ import UserCompany from "./user-company";
 import UserWebsite from "./user-website";
 import UserPhone from "./user-phone";
 import UserEmail from "./user-email";
+import { User } from "@/api/users/model";
 
 const UserCard = ({ user }: { user: User }) => {
   return (

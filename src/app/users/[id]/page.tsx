@@ -1,11 +1,11 @@
 "use client";
 import { useParams } from "next/navigation";
 import { getId } from "./_utils/params-utils";
-import { useGetUser } from "@/api/users/usersApi";
 import Loading from "@/components/v0/loading";
 import AxiosErrorAlert from "@/components/v0/axios-error-alert";
 import UserCard from "./_components/user-card";
 import RedirectButton from "@/components/v0/redirect-button";
+import { useGetUser } from "@/api/users/usersApi";
 
 const UserDetails = () => {
   const id = getId(useParams<{ id: string }>());
