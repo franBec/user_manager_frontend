@@ -7,8 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "orval-build": "orval",
-    "orval-clean": "orval --clean"
+    "orval-build": "orval"
   },
   "dependencies": {
     "@faker-js/faker": "^9.0.3",
@@ -30,6 +29,7 @@
     "msw": "^2.4.11",
     "next": "14.2.15",
     "next-themes": "^0.3.0",
+    "nuqs": "^2.2.1",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.53.1",
