@@ -6,13 +6,9 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { XIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useSidebar } from "@/context/sidebar-context";
 
-interface SidebarProps {
-  isOpen: boolean;
-  toggleSidebar: () => void;
-}
-
-export const Sidebar = ({ isOpen, toggleSidebar }: SidebarProps) => {
+export const Sidebar = () => {
   const pathname = usePathname();
 
   const navItems = [
@@ -20,10 +16,12 @@ export const Sidebar = ({ isOpen, toggleSidebar }: SidebarProps) => {
     { href: "/about", label: "About" },
   ];
 
+  const { isSidebarOpen, toggleSidebar } = useSidebar();
+
   return (
     <aside
       className={`bg-secondary text-secondary-foreground w-64 flex-shrink-0 transition-all duration-300 ease-in-out border-r border-border ${
-        isOpen ? "translate-x-0" : "-translate-x-full"
+        isSidebarOpen ? "translate-x-0" : "-translate-x-full"
       } md:translate-x-0 md:static fixed inset-y-0 left-0 z-50 flex flex-col`}
     >
       <div className="flex items-center justify-between h-16 px-4 border-b border-border">

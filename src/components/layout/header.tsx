@@ -4,8 +4,11 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { MenuIcon } from "lucide-react";
 import { ModeToggle } from "../dark-mode/mode-toogle";
+import { useSidebar } from "@/context/sidebar-context";
 
-export const Header = ({ toggleSidebar }: { toggleSidebar: () => void }) => {
+export const Header = () => {
+  const { toggleSidebar } = useSidebar();
+
   return (
     <header className="bg-secondary text-secondary-foreground shadow-sm z-10 border-b border-border h-16 flex items-center">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex justify-between items-center">
