@@ -14,18 +14,18 @@ import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/hooks/use-toast";
 import { Search } from "lucide-react";
-import { GetUsersParams } from "@/__generated__/api/users/model";
+import { FindAllParams } from "@/__generated__/api/users/model";
 
 export function InputForm({
   defaultValues,
-}: Readonly<{ defaultValues: GetUsersParams }>) {
-  const form = useForm<GetUsersParams>({
+}: Readonly<{ defaultValues: FindAllParams }>) {
+  const form = useForm<FindAllParams>({
     defaultValues,
   });
   const router = useRouter();
   const { toast } = useToast();
 
-  function onSubmit({ q }: GetUsersParams) {
+  function onSubmit({ q }: FindAllParams) {
     if (!q || q.trim().length === 0) {
       router.push("/users");
       return;
