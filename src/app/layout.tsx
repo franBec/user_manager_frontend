@@ -5,8 +5,9 @@ import Layout from "@/components/layout/layout";
 import { ThemeProvider } from "@/components/dark-mode/theme-provider";
 import ClientProvider from "@/components/react-query/client-provider";
 import { Toaster } from "@/components/ui/toaster";
-import React from "react";
+import React, { Suspense } from "react";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
+import Loading from "@/components/v0/loading";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -46,8 +47,10 @@ export default function RootLayout({
               disableTransitionOnChange
             >
               <Layout>
-                {modal}
-                {children}
+                <Suspense fallback={<Loading />}>
+                  {modal}
+                  {children}
+                </Suspense>
               </Layout>
               <Toaster />
             </ThemeProvider>
