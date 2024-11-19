@@ -4,8 +4,8 @@ export default defineConfig({
     users: {
         output: {
             mode: 'split',
-            target: 'src/api/users/usersApi.ts',
-            schemas: 'src/api/users/model',
+            target: 'src/__generated__/api/users/usersApi.ts',
+            schemas: 'src/__generated__/api/users/model',
             client: 'react-query',
         },
         input: {

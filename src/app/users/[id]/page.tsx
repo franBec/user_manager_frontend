@@ -5,7 +5,7 @@ import Loading from "@/components/v0/loading";
 import AxiosErrorAlert from "@/components/v0/axios-error-alert";
 import UserCard from "./_components/user-card";
 import RedirectButton from "@/components/v0/redirect-button";
-import { useGetUser } from "@/api/users/usersApi";
+import { useGetUser } from "@/__generated__/api/users/usersApi";
 
 const UserDetails = () => {
   const id = getId(useParams<{ id: string }>());

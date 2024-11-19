@@ -1,4 +1,4 @@
-import { User } from "@/api/users/model";
+import { User } from "@/__generated__/api/users/model";
 import HoverLink from "@/components/v0/hover-link";
 import { createColumnHelper } from "@tanstack/react-table";
 

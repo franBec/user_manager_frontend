@@ -1,4 +1,4 @@
-import { Company } from "@/api/users/model";
+import { Company } from "@/__generated__/api/users/model";
 import { Briefcase } from "lucide-react";
 
 const UserCompany = ({ company }: { company: Company }) => {

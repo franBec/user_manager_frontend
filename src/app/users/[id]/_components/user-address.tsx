@@ -1,4 +1,4 @@
-import { Address } from "@/api/users/model";
+import { Address } from "@/__generated__/api/users/model";
 import { MapPin } from "lucide-react";
 
 const UserAddress = ({ address }: { address: Address }) => {

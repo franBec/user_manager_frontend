@@ -5,7 +5,7 @@ import UserCompany from "./user-company";
 import UserWebsite from "./user-website";
 import UserPhone from "./user-phone";
 import UserEmail from "./user-email";
-import { User } from "@/api/users/model";
+import { User } from "@/__generated__/api/users/model";
 
 const UserCard = ({ user }: { user: User }) => {
   return (

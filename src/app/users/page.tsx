@@ -9,7 +9,7 @@ import { InputForm } from "./_components/input-form";
 import { DataTablePagination } from "./_components/data-table-pagination";
 import AxiosErrorAlert from "@/components/v0/axios-error-alert";
 import Loading from "@/components/v0/loading";
-import { useGetUsers } from "@/api/users/usersApi";
+import { useGetUsers } from "@/__generated__/api/users/usersApi";
 
 export default function Users() {
   const searchParams = useSearchParams();

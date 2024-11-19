@@ -14,7 +14,7 @@ import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/hooks/use-toast";
 import { Search } from "lucide-react";
-import { GetUsersParams } from "@/api/users/model";
+import { GetUsersParams } from "@/__generated__/api/users/model";
 
 export function InputForm({
   defaultValues,
