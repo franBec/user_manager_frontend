@@ -1,3 +1,0 @@
-{
-  "sonarlint.analysisExcludesStandalone": "**/src/api/**,**/src/app/fonts/**,**/src/components/ui/**,**/src/hooks/**,**/src/lib/**,**/node_modules/**"
-}
