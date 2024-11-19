@@ -6,7 +6,7 @@ import { ThemeProvider } from "@/components/dark-mode/theme-provider";
 import ClientProvider from "@/components/react-query/client-provider";
 import { Toaster } from "@/components/ui/toaster";
 import React from "react";
-import { NuqsAdapter } from 'nuqs/adapters/next/app'
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -37,20 +37,20 @@ export default function RootLayout({
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-        <NuqsAdapter>
-          <ThemeProvider
+          <NuqsAdapter>
+            <ThemeProvider
               attribute="class"
               defaultTheme="system"
               enableSystem
               disableTransitionOnChange
-          >
-            <Layout>
-              {modal}
-              {children}
-            </Layout>
-            <Toaster />
-          </ThemeProvider>
-        </NuqsAdapter>
+            >
+              <Layout>
+                {modal}
+                {children}
+              </Layout>
+              <Toaster />
+            </ThemeProvider>
+          </NuqsAdapter>
         </body>
       </html>
     </ClientProvider>

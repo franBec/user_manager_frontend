@@ -1,13 +1,15 @@
 openapi: 3.0.3
 info:
   title: post - Pollito Opinionated Spring-Boot Template
-  description: Example of a Spring Boot 3 project with various practices that Pollito thinks are good
+  description:
+    Example of a Spring Boot 3 project with various practices that Pollito
+    thinks are good
   version: 1.0.0
   contact:
     name: Pollito
     url: https://pollitodev.netlify.app/
 servers:
-  - url: 'http://localhost:8080'
+  - url: "http://localhost:8080"
 paths:
   /users:
     get:
@@ -23,7 +25,9 @@ paths:
             default: 0
             minimum: 0
             type: integer
-        - description: Use this parameter to specify a pagination limit (number of results per page) for your request
+        - description:
+            Use this parameter to specify a pagination limit (number of results
+            per page) for your request
           in: query
           name: pageSize
           schema:
@@ -31,17 +35,24 @@ paths:
             maximum: 10
             minimum: 1
             type: integer
-        - description: Use this parameter to specify the property by which you want to sort the results of your request
+        - description:
+            Use this parameter to specify the property by which you want to sort
+            the results of your request
           in: query
           name: sortProperty
           schema:
-            $ref: '#/components/schemas/UserSortProperty'
-        - description: Use this parameter to specify the direction (asc or desc) of your request results
+            $ref: "#/components/schemas/UserSortProperty"
+        - description:
+            Use this parameter to specify the direction (asc or desc) of your
+            request results
           in: query
           name: sortDirection
           schema:
-            $ref: '#/components/schemas/SortDirection'
-        - description: Use this parameter to filter users by checking if provided string is part of email, name, or username. If not used, no filtering will be done.
+            $ref: "#/components/schemas/SortDirection"
+        - description:
+            Use this parameter to filter users by checking if provided string is
+            part of email, name, or username. If not used, no filtering will be
+            done.
           in: query
           name: q
           schema:
@@ -49,18 +60,18 @@ paths:
             maxLength: 30
             type: string
       responses:
-        '200':
+        "200":
           description: List of all users
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Users'
+                $ref: "#/components/schemas/Users"
         default:
           description: Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
   /users/{id}:
     get:
       tags:
@@ -75,18 +86,18 @@ paths:
           schema:
             type: integer
       responses:
-        '200':
+        "200":
           description: A user
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/User'
+                $ref: "#/components/schemas/User"
         default:
           description: Error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
 components:
   schemas:
     Address:
@@ -97,7 +108,7 @@ components:
           example: "Gwenborough"
           type: string
         geo:
-          $ref: '#/components/schemas/Geo'
+          $ref: "#/components/schemas/Geo"
         street:
           description: Address street
           example: "Kulas Light"
@@ -154,7 +165,9 @@ components:
           example: "0c6a41e22fe6478cc391908406ca9b8d"
           type: string
         type:
-          description: used to point the client to documentation where it is explained clearly what happened and why.
+          description:
+            used to point the client to documentation where it is explained
+            clearly what happened and why.
           example: "about:blank"
           type: string
       type: object
@@ -183,14 +196,14 @@ components:
           type: integer
     SortDirection:
       type: string
-      enum: [ ASC, DESC ]
+      enum: [ASC, DESC]
       default: ASC
     User:
       properties:
         address:
-          $ref: '#/components/schemas/Address'
+          $ref: "#/components/schemas/Address"
         company:
-          $ref: '#/components/schemas/Company'
+          $ref: "#/components/schemas/Company"
         email:
           description: User email
           example: "Sincere@april.biz"
@@ -221,20 +234,15 @@ components:
         content:
           type: array
           items:
-            $ref: '#/components/schemas/User'
+            $ref: "#/components/schemas/User"
         pageable:
-          $ref: '#/components/schemas/Pageable'
+          $ref: "#/components/schemas/Pageable"
         totalElements:
           description: Total number of items that meet the criteria
           example: 10
           type: integer
       type: object
     UserSortProperty:
-      enum: [
-        email,
-        id,
-        name,
-        username
-      ]
+      enum: [email, id, name, username]
       default: id
       type: string

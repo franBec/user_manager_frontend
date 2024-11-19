@@ -19,7 +19,7 @@ export const columns = [
   columnHelper.display({
     id: "actions",
     header: () => "Actions",
-    cell: (cellContext) => {
+    cell: cellContext => {
       const userId = cellContext.row.original.id;
       return <HoverLink href={`/users/${userId}`} />;
     },

@@ -42,7 +42,7 @@ export const Sidebar = ({ isOpen, toggleSidebar }: SidebarProps) => {
       </div>
       <ScrollArea className="flex-grow">
         <nav className="p-4 space-y-2">
-          {navItems.map((item) => (
+          {navItems.map(item => (
             <Link
               key={item.href}
               href={item.href}
