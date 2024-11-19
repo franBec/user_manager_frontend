@@ -5,7 +5,7 @@ import Loading from "@/components/v0/loading";
 import AxiosErrorAlert from "@/components/v0/axios-error-alert";
 import UserCard from "./_components/user-card";
 import RedirectButton from "@/components/v0/redirect-button";
-import { useGetUser } from "@/__generated__/api/users/usersApi";
+import { useFindById } from "@/__generated__/api/users/usersApi";
 
 const UserDetails = () => {
   const id = getId(useParams<{ id: string }>());
@@ -14,7 +14,7 @@ const UserDetails = () => {
     isError,
     data: response,
     error,
-  } = useGetUser(id, {
+  } = useFindById(id, {
     axios: { baseURL: process.env.NEXT_PUBLIC_API_USERS_BASE_URL },
   });
 

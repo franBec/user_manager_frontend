@@ -4,7 +4,7 @@ import { InputForm } from "./_components/input-form";
 import { DataTablePagination } from "./_components/data-table-pagination";
 import AxiosErrorAlert from "@/components/v0/axios-error-alert";
 import Loading from "@/components/v0/loading";
-import { useGetUsers } from "@/__generated__/api/users/usersApi";
+import { useFindAll } from "@/__generated__/api/users/usersApi";
 import { parseAsInteger, parseAsStringLiteral, useQueryState } from "nuqs";
 import {
   SortDirection,
@@ -40,7 +40,7 @@ export default function Users() {
     isError,
     data: response,
     error,
-  } = useGetUsers(getUsersParams, {
+  } = useFindAll(getUsersParams, {
     axios: { baseURL: process.env.NEXT_PUBLIC_API_USERS_BASE_URL },
   });
 
