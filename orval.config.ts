@@ -9,7 +9,7 @@ export default defineConfig({
       client: "react-query",
     },
     input: {
-      target: "src/openapi/post.yaml",
+      target: "src/openapi/userManagerBackend.yaml",
     },
   },
 });
