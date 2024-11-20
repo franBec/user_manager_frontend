@@ -23,7 +23,7 @@ export default function About() {
             <li>Microsoft Azure Certified: Azure Fundamentals</li>
             <li>Scrum Master Certified by Scrum.org</li>
             <li>Java Certifications by UTN Buenos Aires & Banco Pichincha</li>
-            <li>English C2 Proficient Certificated by EF SET</li>
+            <li>English C2 Proficient Certified by EF SET</li>
           </ul>
         </div>
       </div>
