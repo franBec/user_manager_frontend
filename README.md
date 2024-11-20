@@ -4,7 +4,7 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app). This is a demonstration on how to consume a RESTful API following [Design by Contract principles](https://en.wikipedia.org/wiki/Design_by_contract).
 
 ## Live Demo
-WIP
+[https://user-manager-frontend-eight.vercel.app/](https://user-manager-frontend-eight.vercel.app/)
 
 ## Getting Started
 
